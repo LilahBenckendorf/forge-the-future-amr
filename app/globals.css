@@ -75,6 +75,15 @@ button, a { -webkit-tap-highlight-color: transparent; }
   text-transform: uppercase;
 }
 
+.micro-label {
+  font-family: var(--font-geist-mono), monospace;
+  font-size: 0.55rem;
+  letter-spacing: 0.18em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: rgb(255 255 255 / 36%);
+}
+
 .text-outline {
   color: transparent;
   -webkit-text-stroke: 1px rgb(255 255 255 / 42%);
