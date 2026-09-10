@@ -1,26 +1,24 @@
-'use client';
-
 import Image from 'next/image';
 import {
   ArrowRight,
   ArrowUpRight,
   Bot,
   BriefcaseBusiness,
-  Check,
   CircuitBoard,
   Clock3,
   DraftingCompass,
   Flame,
   MapPin,
   ScanLine,
-  Share2,
 } from 'lucide-react';
-import { useState } from 'react';
+import { ShareButton } from '@/components/share-button';
+
+export const dynamic = 'force-static';
 
 const topics = ['Advanced manufacturing', 'Metallurgy', 'AI', 'Robotics'];
 
-const inviteHref =
-  'mailto:lilahbenckendorf@berkeley.edu,tim@advancedmetalresearch.com?subject=Invitation%20request%20%E2%80%94%20Forge%20the%20Future%20Berkeley&body=Hi%20Lilah%20and%20Tim%2C%0A%0AI%27d%20like%20to%20request%20an%20invitation%20to%20Forge%20the%20Future%20on%20Thursday%2C%20September%2010%20at%206%3A00%20PM%20at%20The%20Glade%20in%20Berkeley.%0A%0AName%3A%0AOrganization%3A%0AEngineering%20focus%3A%0A%0AThank%20you!';
+const contactHref =
+  'mailto:lilahbenckendorf@berkeley.edu,tim@advancedmetalresearch.com?subject=Forge%20the%20Future%20Berkeley%20%E2%80%94%20question&body=Hi%20Lilah%20and%20Tim%2C%0A%0AI%20have%20a%20question%20about%20Forge%20the%20Future%20on%20Thursday%2C%20September%2010%20at%206%3A00%20PM%20at%20The%20Glade%20in%20Berkeley.%0A%0AThank%20you!';
 
 const program = [
   { title: 'CAD → path', detail: 'Geometry, fixtures and robot motion', icon: DraftingCompass },
@@ -30,28 +28,6 @@ const program = [
 ];
 
 export default function Home() {
-  const [shared, setShared] = useState(false);
-
-  async function shareEvent() {
-    const shareData = {
-      title: 'Forge the Future — Berkeley',
-      text: 'Join engineers at The Glade in Berkeley on Thursday, Sep. 10 at 6:00 PM for advanced manufacturing, metallurgy, AI, and robotics.',
-      url: window.location.href,
-    };
-
-    try {
-      if (navigator.share) {
-        await navigator.share(shareData);
-      } else {
-        await navigator.clipboard.writeText(window.location.href);
-        setShared(true);
-        window.setTimeout(() => setShared(false), 2200);
-      }
-    } catch {
-      // Closing the native share sheet is an intentional no-op.
-    }
-  }
-
   return (
     <main className="min-h-screen overflow-hidden bg-ink text-white">
       <nav className="relative z-20 mx-auto flex h-16 w-full max-w-[1380px] items-center justify-between px-5 sm:px-8 lg:px-10">
@@ -61,13 +37,10 @@ export default function Home() {
         </a>
         <div className="flex items-center gap-4">
           <span className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-white/45 sm:flex"><MapPin className="h-3 w-3 text-copper" /> The Glade · Berkeley</span>
-          <a href={inviteHref} className="group inline-flex h-9 items-center gap-2 bg-copper px-3.5 text-[10px] font-black uppercase tracking-[0.14em] text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan">
-            Get invited <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+          <a href="#details" className="group inline-flex h-9 items-center gap-2 bg-copper px-3.5 text-[10px] font-black uppercase tracking-[0.14em] text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan">
+            No invitation required <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
           </a>
-          <button type="button" onClick={shareEvent} className="inline-flex h-9 cursor-pointer items-center gap-2 border border-white/20 px-3 text-[10px] font-bold uppercase tracking-[0.14em] transition hover:border-copper hover:bg-copper hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan" aria-label="Share this event">
-            {shared ? <Check className="h-3.5 w-3.5" /> : <Share2 className="h-3.5 w-3.5" />}
-            <span className="hidden sm:inline">{shared ? 'Copied' : 'Share'}</span>
-          </button>
+          <ShareButton />
         </div>
       </nav>
 
@@ -86,11 +59,11 @@ export default function Home() {
               One focused evening connecting mechanical design, mechatronics, metallurgy, AI and robotic welding.
             </p>
 
-            <div className="mt-7 flex flex-wrap items-center gap-4">
-              <a href={inviteHref} className="group inline-flex items-center gap-8 bg-copper px-5 py-4 text-xs font-black uppercase tracking-[0.15em] text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan">
-                Get invited <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <div id="details" className="mt-7 flex flex-wrap items-center gap-4">
+              <a href={contactHref} className="group inline-flex items-center gap-8 bg-copper px-5 py-4 text-xs font-black uppercase tracking-[0.15em] text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan">
+                Email the organizers <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
               </a>
-              <p className="max-w-52 text-[10px] leading-4 text-white/40">Opens an email addressed to both Lilah and Tim.</p>
+              <p className="max-w-60 text-[10px] leading-4 text-white/55"><strong className="text-white">No invitation is necessary.</strong><br />Questions email both Lilah and Tim.</p>
             </div>
 
             <div className="mt-5 grid max-w-2xl grid-cols-2 gap-px bg-white/15 sm:grid-cols-3">
@@ -101,7 +74,7 @@ export default function Home() {
           </div>
 
           <aside className="relative min-h-[310px] overflow-hidden border border-white/10 bg-panel sm:min-h-[390px] lg:h-[min(66vh,590px)]" aria-label="Robotic welding event visual">
-            <Image src="/hero.png" alt="Robotic welding cell scanning a precision metal workpiece" fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover object-[68%_center]" />
+            <Image src={`${process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? ''}/hero.png`} alt="Robotic welding cell scanning a precision metal workpiece" fill priority sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover object-[68%_center]" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink/95 via-transparent to-transparent" />
             <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between border-t border-white/20 pt-4">
               <div><p className="font-mono text-[9px] uppercase tracking-[0.2em] text-scan">Engineer focus</p><p className="mt-1.5 text-lg font-semibold">Mechanisms → motion → evidence</p></div>
@@ -158,10 +131,10 @@ export default function Home() {
             <h2 className="mt-3 font-display text-[clamp(2.5rem,5vw,5rem)] font-black uppercase leading-[0.88] tracking-[-0.06em]">Bring your hard problem.</h2>
           </div>
           <div>
-            <a href={inviteHref} className="group inline-flex min-w-72 items-center justify-between bg-paper px-5 py-4 text-xs font-bold uppercase tracking-[0.15em] text-charcoal transition hover:bg-copper">
-              Get invited <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <a href={contactHref} className="group inline-flex min-w-72 items-center justify-between bg-paper px-5 py-4 text-xs font-bold uppercase tracking-[0.15em] text-charcoal transition hover:bg-copper">
+              Email the organizers <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </a>
-            <p className="mt-2 text-[9px] uppercase tracking-[0.12em] text-white/45">Emails Lilah + Tim together</p>
+            <p className="mt-2 text-[9px] leading-4 uppercase tracking-[0.12em] text-white/55">No invitation required · lilahbenckendorf@berkeley.edu<br />tim@advancedmetalresearch.com</p>
           </div>
         </div>
       </section>
@@ -169,7 +142,7 @@ export default function Home() {
       <footer className="bg-ink text-white">
         <div className="mx-auto flex max-w-[1380px] flex-col gap-4 px-5 py-6 text-[9px] uppercase tracking-[0.16em] text-white/40 sm:flex-row sm:items-center sm:justify-between sm:px-8 lg:px-10">
           <p>Event at The Glade, Berkeley · AMR based in Hawthorne, California</p>
-          <div className="flex gap-5"><a className="inline-flex items-center gap-1 transition hover:text-white" href="https://advancedmetalresearch.com/about" target="_blank" rel="noreferrer">About AMR <ArrowUpRight className="h-3 w-3" /></a><button type="button" onClick={shareEvent} className="cursor-pointer transition hover:text-white">Share</button></div>
+          <div className="flex gap-5"><a className="inline-flex items-center gap-1 transition hover:text-white" href="https://advancedmetalresearch.com/about" target="_blank" rel="noreferrer">About AMR <ArrowUpRight className="h-3 w-3" /></a><ShareButton compact /></div>
         </div>
       </footer>
     </main>

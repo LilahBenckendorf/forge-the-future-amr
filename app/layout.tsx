@@ -16,19 +16,19 @@ export const metadata: Metadata = {
   title: 'Forge the Future | Advanced Metal Research',
   description:
     'An engineering evening at The Glade in Berkeley on Thursday, Sep. 10 at 6:00 PM exploring robotic welding, metallurgy, AI, and the next manufacturing stack.',
-  metadataBase: new URL('https://forge-the-future-amr.lilahbenckendorf.chatgpt.site'),
+  metadataBase: new URL('https://lilahbenckendorf.github.io/forge-the-future-amr/'),
   openGraph: {
     title: 'Forge the Future | Advanced Metal Research',
     description:
       'Thursday, Sep. 10 at 6:00 PM at The Glade in Berkeley—advanced manufacturing, metallurgy, AI, robotics, and potential Hawthorne internships.',
-    images: ['/og.png'],
+    images: ['https://lilahbenckendorf.github.io/forge-the-future-amr/og.png'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Forge the Future | Advanced Metal Research',
     description:
       'Thursday, Sep. 10 at 6:00 PM at The Glade in Berkeley—advanced manufacturing, metallurgy, AI, robotics, and potential Hawthorne internships.',
-    images: ['/og.png'],
+    images: ['https://lilahbenckendorf.github.io/forge-the-future-amr/og.png'],
   },
 };
 
