@@ -15,19 +15,19 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: 'Forge the Future | Advanced Metal Research',
   description:
-    'A Berkeley engineering evening on Thursday, Sep. 10 at 6:00 PM exploring robotic welding, metallurgy, AI, and the next manufacturing stack.',
+    'An engineering evening at The Glade in Berkeley on Thursday, Sep. 10 at 6:00 PM exploring robotic welding, metallurgy, AI, and the next manufacturing stack.',
   metadataBase: new URL('https://forge-the-future-amr.lilahbenckendorf.chatgpt.site'),
   openGraph: {
     title: 'Forge the Future | Advanced Metal Research',
     description:
-      'Thursday, Sep. 10 at 6:00 PM in Berkeley—advanced manufacturing, metallurgy, AI, robotics, and potential Hawthorne internships.',
+      'Thursday, Sep. 10 at 6:00 PM at The Glade in Berkeley—advanced manufacturing, metallurgy, AI, robotics, and potential Hawthorne internships.',
     images: ['/og.png'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Forge the Future | Advanced Metal Research',
     description:
-      'Thursday, Sep. 10 at 6:00 PM in Berkeley—advanced manufacturing, metallurgy, AI, robotics, and potential Hawthorne internships.',
+      'Thursday, Sep. 10 at 6:00 PM at The Glade in Berkeley—advanced manufacturing, metallurgy, AI, robotics, and potential Hawthorne internships.',
     images: ['/og.png'],
   },
 };
