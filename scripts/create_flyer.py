@@ -10,8 +10,6 @@ ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "output" / "pdf"
 OUTPUT_PATH = OUTPUT_DIR / "forge-the-future-flyer.pdf"
 HERO_PATH = ROOT / "public" / "hero.png"
-QR_PATH = ROOT / "public" / "forge-the-future-qr.png"
-EVENT_URL = "https://forge-the-future-amr.lilahbenckendorf.chatgpt.site"
 INVITE_URL = (
     "mailto:lilahbenckendorf@berkeley.edu,tim@advancedmetalresearch.com"
     "?subject=Invitation%20request%20-%20Forge%20the%20Future%20Berkeley"
@@ -92,28 +90,38 @@ def build_flyer() -> Path:
     c.setFont("Helvetica-Bold", 7.5)
     c.drawString(65, 204, "BEYOND THE EVENT / POTENTIAL INTERNSHIPS")
     c.setFillColor(WHITE)
-    c.setFont("Helvetica-Bold", 19)
+    c.setFont("Helvetica-Bold", 16)
     c.drawString(65, 177, "BUILD HARDWARE NEXT TO SPACEX.")
     c.setFillColor(HexColor("#B9B8B5"))
-    c.setFont("Helvetica", 9.2)
-    c.drawString(65, 153, "Explore possible hands-on opportunities at AMR's 8,250 sq ft")
+    c.setFont("Helvetica", 8.4)
+    c.drawString(65, 153, "Explore possible hands-on opportunities at AMR's")
     c.drawString(65, 139, "Hawthorne shop, directly next to SpaceX headquarters.")
     c.setFillColor(HexColor("#777A7B"))
     c.setFont("Helvetica", 6.7)
     c.drawString(65, 112, "Opportunities depend on AMR availability and selection.")
 
-    qr_x, qr_y, qr_size = 447, 111, 102
+    c.setStrokeColor(HexColor("#454341"))
+    c.setLineWidth(0.7)
+    c.line(356, 112, 356, 204)
+    c.setFillColor(COPPER)
+    c.setFont("Helvetica-Bold", 7.5)
+    c.drawString(378, 204, "GET INVITED / EMAIL BOTH")
     c.setFillColor(WHITE)
-    c.rect(qr_x - 6, qr_y - 6, qr_size + 12, qr_size + 12, stroke=0, fill=1)
-    c.drawImage(str(QR_PATH), qr_x, qr_y, width=qr_size, height=qr_size, mask="auto")
-    c.linkURL(EVENT_URL, (qr_x - 6, qr_y - 6, qr_x + qr_size + 6, qr_y + qr_size + 6), relative=0)
+    c.setFont("Helvetica-Bold", 7.2)
+    c.drawString(378, 177, "lilahbenckendorf@berkeley.edu")
+    c.drawString(378, 160, "tim@advancedmetalresearch.com")
+    c.setFillColor(HexColor("#8C8C89"))
+    c.setFont("Helvetica", 6.7)
+    c.drawString(378, 133, "The link opens a pre-addressed email")
+    c.drawString(378, 121, "to both event organizers.")
+    c.linkURL(INVITE_URL, (369, 108, 555, 214), relative=0)
 
     c.setFillColor(CHARCOAL)
     c.setFont("Helvetica-Bold", 9)
-    c.drawString(44, 57, "SCAN TO GET INVITED")
+    c.drawString(44, 57, "GET INVITED BY EMAIL")
     c.setFillColor(MUTED)
     c.setFont("Helvetica", 7.8)
-    c.drawString(44, 42, "Requests open a pre-addressed email to Lilah + Tim.")
+    c.drawString(44, 42, "Invitation requests are addressed to Lilah + Tim together.")
     c.setFillColor(RED)
     c.setFont("Helvetica-Bold", 7.2)
     c.drawRightString(568, 57, "THE GLADE / BERKELEY")
