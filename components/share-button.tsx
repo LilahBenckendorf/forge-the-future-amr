@@ -37,7 +37,7 @@ export function ShareButton({ compact = false }: { compact?: boolean }) {
   return (
     <button type="button" onClick={shareEvent} className="inline-flex h-9 cursor-pointer items-center gap-2 border border-white/20 px-3 text-[10px] font-bold uppercase tracking-[0.14em] transition hover:border-copper hover:bg-copper hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan" aria-label="Share this event">
       {shared ? <Check className="h-3.5 w-3.5" /> : <Share2 className="h-3.5 w-3.5" />}
-      <span className="hidden sm:inline">{shared ? 'Copied' : 'Share'}</span>
+      <span className="hidden sm:inline">{shared ? 'Link copied' : 'Share event'}</span>
     </button>
   );
 }
