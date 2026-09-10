@@ -19,6 +19,9 @@ import { useState } from 'react';
 
 const topics = ['Advanced manufacturing', 'Metallurgy', 'AI', 'Robotics'];
 
+const inviteHref =
+  'mailto:lilahbenckendorf@berkeley.edu,tim@advancedmetalresearch.com?subject=Invitation%20request%20%E2%80%94%20Forge%20the%20Future%20Berkeley&body=Hi%20Lilah%20and%20Tim%2C%0A%0AI%27d%20like%20to%20request%20an%20invitation%20to%20Forge%20the%20Future%20on%20Thursday%2C%20September%2010%20at%206%3A00%20PM%20in%20Berkeley.%0A%0AName%3A%0AOrganization%3A%0AEngineering%20focus%3A%0A%0AThank%20you!';
+
 const program = [
   { title: 'CAD → path', detail: 'Geometry, fixtures and robot motion', icon: DraftingCompass },
   { title: 'Sense', detail: 'Vision, calibration and seam tracking', icon: ScanLine },
@@ -32,7 +35,7 @@ export default function Home() {
   async function shareEvent() {
     const shareData = {
       title: 'Forge the Future — Berkeley',
-      text: 'Join engineers in Berkeley at 6:00 PM for advanced manufacturing, metallurgy, AI, and robotics.',
+      text: 'Join engineers in Berkeley on Thursday, Sep. 10 at 6:00 PM for advanced manufacturing, metallurgy, AI, and robotics.',
       url: window.location.href,
     };
 
@@ -57,10 +60,13 @@ export default function Home() {
           <span className="hidden text-[10px] font-semibold uppercase tracking-[0.18em] text-white/70 sm:block">Forge the Future</span>
         </a>
         <div className="flex items-center gap-4">
-          <span className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-white/45 sm:flex"><MapPin className="h-3 w-3 text-copper" /> Berkeley, CA</span>
+          <span className="hidden items-center gap-2 text-[10px] uppercase tracking-[0.18em] text-white/45 sm:flex"><MapPin className="h-3 w-3 text-copper" /> Thu · Sep. 10 · Berkeley</span>
+          <a href={inviteHref} className="group inline-flex h-9 items-center gap-2 bg-copper px-3.5 text-[10px] font-black uppercase tracking-[0.14em] text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan">
+            Get invited <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+          </a>
           <button type="button" onClick={shareEvent} className="inline-flex h-9 cursor-pointer items-center gap-2 border border-white/20 px-3 text-[10px] font-bold uppercase tracking-[0.14em] transition hover:border-copper hover:bg-copper hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan" aria-label="Share this event">
             {shared ? <Check className="h-3.5 w-3.5" /> : <Share2 className="h-3.5 w-3.5" />}
-            {shared ? 'Copied' : 'Share'}
+            <span className="hidden sm:inline">{shared ? 'Copied' : 'Share'}</span>
           </button>
         </div>
       </nav>
@@ -72,7 +78,7 @@ export default function Home() {
             <div className="mb-6 flex flex-wrap gap-1.5">
               {topics.map((topic) => <span key={topic} className="border border-white/15 px-2.5 py-1 text-[9px] font-medium uppercase tracking-[0.13em] text-white/55">{topic}</span>)}
             </div>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.25em] text-copper">Berkeley · 6:00 PM</p>
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.25em] text-copper">Thursday · Sep. 10 · Berkeley</p>
             <h1 className="font-display text-[clamp(3.7rem,8vw,7.7rem)] font-black uppercase leading-[0.8] tracking-[-0.075em]">
               Forge<br /><span className="text-outline">the future.</span>
             </h1>
@@ -80,8 +86,15 @@ export default function Home() {
               One focused evening connecting mechanical design, mechatronics, metallurgy, AI and robotic welding.
             </p>
 
-            <div className="mt-7 grid max-w-2xl grid-cols-2 gap-px bg-white/15 sm:grid-cols-3">
-              <div className="flex items-center gap-3 bg-ink px-4 py-3.5"><Clock3 className="h-4 w-4 text-copper" /><div><p className="micro-label">Starts</p><p className="mt-0.5 text-sm font-semibold">6:00 PM</p></div></div>
+            <div className="mt-7 flex flex-wrap items-center gap-4">
+              <a href={inviteHref} className="group inline-flex items-center gap-8 bg-copper px-5 py-4 text-xs font-black uppercase tracking-[0.15em] text-ink transition hover:bg-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-scan">
+                Get invited <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </a>
+              <p className="max-w-52 text-[10px] leading-4 text-white/40">Opens an email addressed to both Lilah and Tim.</p>
+            </div>
+
+            <div className="mt-5 grid max-w-2xl grid-cols-2 gap-px bg-white/15 sm:grid-cols-3">
+              <div className="flex items-center gap-3 bg-ink px-4 py-3.5"><Clock3 className="h-4 w-4 text-copper" /><div><p className="micro-label">Thursday · Sep. 10</p><p className="mt-0.5 text-sm font-semibold">6:00 PM</p></div></div>
               <div className="flex items-center gap-3 bg-ink px-4 py-3.5"><MapPin className="h-4 w-4 text-copper" /><div><p className="micro-label">Event</p><p className="mt-0.5 text-sm font-semibold">Berkeley, CA</p></div></div>
               <div className="col-span-2 flex items-center gap-3 bg-ink px-4 py-3.5 sm:col-span-1"><CircuitBoard className="h-4 w-4 text-copper" /><div><p className="micro-label">Priority</p><p className="mt-0.5 text-sm font-semibold">ME + Mechatronics</p></div></div>
             </div>
@@ -141,12 +154,15 @@ export default function Home() {
       <section id="reserve" className="bg-red text-white">
         <div className="mx-auto grid max-w-[1380px] items-center gap-7 px-5 py-12 sm:px-8 md:grid-cols-[1fr_auto] lg:px-10 lg:py-14">
           <div>
-            <p className="section-label text-white/55">Berkeley · 6:00 PM</p>
+            <p className="section-label text-white/55">Thursday · Sep. 10 · 6:00 PM · Berkeley</p>
             <h2 className="mt-3 font-display text-[clamp(2.5rem,5vw,5rem)] font-black uppercase leading-[0.88] tracking-[-0.06em]">Bring your hard problem.</h2>
           </div>
-          <a href="https://advancedmetalresearch.com/contact?subject=Forge%20the%20Future%20Berkeley%20event" target="_blank" rel="noreferrer" className="group inline-flex min-w-72 items-center justify-between bg-paper px-5 py-4 text-xs font-bold uppercase tracking-[0.15em] text-charcoal transition hover:bg-copper">
-            Request an invitation <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
-          </a>
+          <div>
+            <a href={inviteHref} className="group inline-flex min-w-72 items-center justify-between bg-paper px-5 py-4 text-xs font-bold uppercase tracking-[0.15em] text-charcoal transition hover:bg-copper">
+              Get invited <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            </a>
+            <p className="mt-2 text-[9px] uppercase tracking-[0.12em] text-white/45">Emails Lilah + Tim together</p>
+          </div>
         </div>
       </section>
 
