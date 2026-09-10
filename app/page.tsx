@@ -81,8 +81,8 @@ export default function Home() {
             <a href="#join" className="group mt-px flex items-center justify-between bg-copper px-5 py-3 text-[11px] font-black uppercase tracking-[0.16em] text-ink transition hover:bg-white">No invitation required <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
           </div>
 
-          <aside className="relative mt-2 min-h-[360px] overflow-hidden border border-white/10 bg-panel sm:min-h-[520px] lg:min-h-[640px]" aria-label="Robotic welding event visual">
-            <Image src={`${process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? ''}/hero.png`} alt="Robotic welding cell scanning a precision metal workpiece" fill priority sizes="(min-width: 1024px) 46vw, 100vw" className="scale-110 object-cover object-right" />
+          <aside className="relative mt-2 min-h-[360px] overflow-hidden border border-white/10 bg-panel sm:min-h-[520px] lg:min-h-[640px]" aria-label="AMR robotic welding event visual">
+            <Image src={`${process.env.NEXT_PUBLIC_SITE_BASE_PATH ?? ''}/amr-rosie.jpg`} alt="AMR’s Rosie six-axis welding robot in the Hawthorne workshop" fill priority sizes="(min-width: 1024px) 46vw, 100vw" className="object-cover object-center lg:object-[46%_center]" />
             <div className="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-transparent opacity-75" />
             <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between border-t border-white/20 pt-4 sm:bottom-7 sm:left-7 sm:right-7 sm:pt-5">
               <div><p className="font-mono text-[10px] uppercase tracking-[0.22em] text-scan">Front-row focus</p><p className="mt-2 max-w-xs text-xl font-semibold leading-tight text-white sm:text-2xl">Mechanical +<br />mechatronics engineers</p></div>
@@ -135,7 +135,7 @@ export default function Home() {
 
           <div className="mt-px grid gap-8 bg-red p-7 text-white sm:p-10 lg:grid-cols-[auto_1fr_auto] lg:items-center">
             <BriefcaseBusiness className="h-8 w-8 text-copper" strokeWidth={1.4} />
-            <div><p className="section-label text-white/55">Potential internships</p><h3 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">Build hardware next to SpaceX.</h3><p className="mt-3 max-w-2xl text-sm leading-6 text-white/65">Explore possible hands-on opportunities at AMR’s Hawthorne shop, directly next to SpaceX headquarters. Opportunities depend on AMR availability and selection.</p></div>
+            <div><p className="section-label text-white/55">Potential internships</p><h3 className="mt-3 text-3xl font-semibold tracking-[-0.04em]">Build hardware next to SpaceX R&amp;D.</h3><p className="mt-3 max-w-2xl text-sm leading-6 text-white/65">Explore possible hands-on opportunities at AMR’s Hawthorne shop, directly next to SpaceX R&amp;D. Opportunities depend on AMR availability and selection.</p></div>
             <a href={contactHref} className="group inline-flex items-center gap-3 border-b border-white pb-1 text-xs font-bold uppercase tracking-[0.16em]">Ask the team <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></a>
           </div>
         </div>
